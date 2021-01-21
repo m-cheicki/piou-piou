@@ -8,8 +8,15 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="SendFile">
-          <Stack.Screen name="SendFile" component={SendFile} />
+        <Stack.Navigator 
+        initialRouteName="SendFile"
+        screenOptions={{
+          headerShown: false
+        }}>
+        <Stack.Screen
+          name="SendFile"
+          component={SendFile}
+        />
           <Stack.Screen name="ReceiveFile" component={ReceiveFile} />
         </Stack.Navigator>
       </NavigationContainer>
