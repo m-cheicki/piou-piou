@@ -12,16 +12,13 @@ import {
   SafeAreaView,
   TouchableOpacity
 } from 'react-native';
+import Header  from './Header';
 
 export default function SendFile({navigation}: {navigation: any}){
     return (
         <SafeAreaView style={[containers.container]}>
-            <View style={[containers.container, containers.header]} >
-                <Text style={[text.title]}>PIOU PIOU</Text>
-                {/* <TouchableOpacity>
-                    <Text style={[buttons.settings, styles.border]}></Text>
-                </TouchableOpacity> */}
-            </View>
+
+            <Header />
 
             <View style={[containers.container, containers.sendFile]} >
                 <Text style={[text.mainActionTitle, text.blueText]}>Send a file</Text>
@@ -29,6 +26,7 @@ export default function SendFile({navigation}: {navigation: any}){
                     <Text style={[buttons.chooseFile, styles.border]}></Text>
                 </TouchableOpacity>
             </View>
+            
             <View style={[containers.container, containers.playButtonContainer]} >
                 <TouchableOpacity style={[buttons.play]}>
                     <Text style={styles.playIcon}></Text>

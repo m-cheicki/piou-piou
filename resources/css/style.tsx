@@ -2,7 +2,7 @@ import { SortOutlined } from "@material-ui/icons";
 import {StyleSheet } from "react-native";
 
 // Color palette
-const colors = {
+export const colors = {
     "white": "#F8F8F8", 
     "yellow": "#FECA57",
     "black": "#323232", 
@@ -48,12 +48,13 @@ export const containers = StyleSheet.create({
         paddingVertical: 12,
     }, 
     header: {
-        // marginTop: 50,
+        marginTop: 18,
+        // backgroundColor: colors.salmon,
         flexGrow: 1, 
         flexDirection: "row", 
         justifyContent: "space-between", 
         alignItems: "center", 
-        paddingHorizontal: 24, 
+        paddingHorizontal: 18, 
     },
     playButtonContainer: {
         flexGrow: 2, 

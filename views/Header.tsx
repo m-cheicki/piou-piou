@@ -2,34 +2,28 @@ import React, { Component } from "react";
 import {
   Text,
   View,
-  SafeAreaView,
-  TouchableOpacity
+SafeAreaView,
+TouchableOpacity, 
+  Image
 } from 'react-native';
 import {
+    colors,
   buttons,
   containers,
-  styles
+  styles, text
 } from '../resources/css/style';
 
+import typo from '../resources/images/typo.png'; 
 
-export default class Header extends Component{
-    render() {
-        return(
-            <div>
-                <View style={[containers.container, containers.header]} >
-                    <Text style={[styles.title]}>PIOU - PIOU</Text>
-                    <TouchableOpacity>
-                    <Text style={[buttons.settings, styles.border]}></Text>
-                    </TouchableOpacity>
-                </View>
-
-                <View style={[containers.container, containers.sendFile]} >
-                    <Text style={[styles.sendFileTitle]}>Choose a file</Text>
-                    <TouchableOpacity>
-                    <Text style={[buttons.chooseFile, styles.border]}></Text>
-                    </TouchableOpacity>
-                </View>
-            </div>
-        )
-    }
+export default function Header(){
+    return(
+        <View style={[containers.container, containers.header]} >
+            <Image source={typo} style={{ width: 150, height: 75}} />
+            {/*
+            <Text style={[text.title]}>PIOU PIOU   dsdsd</Text>
+                <TouchableOpacity>
+                <Text style={[buttons.settings, styles.border]}></Text>
+            </TouchableOpacity> */}
+        </View>
+    )
 }
