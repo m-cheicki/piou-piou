@@ -29,6 +29,8 @@ export const buttons = StyleSheet.create({
         width: 125,  
         height: 125, 
         borderRadius: 150, 
+        paddingVertical: 25,
+        paddingLeft: 45,
     },
     settings: {
         backgroundColor: colors.black,
@@ -127,6 +129,20 @@ export const lightShadow = {
     shadowRadius: 10,
 }
 */
+
+export const shadowOpt = {
+    width: 160,
+    height: 170,
+    color: "#000",
+    border: 2,
+    radius: 3,
+    opacity: 0.2,
+    x: 0,
+    y: 3,
+    style: { marginVertical: 5 }
+ };
+
+
 export const styles = StyleSheet.create({
     darkShadow: {
         shadowColor: "#000", 
@@ -147,9 +163,14 @@ export const styles = StyleSheet.create({
         shadowRadius: 10,
     },
     border: {
-        borderColor: colors.white,
-        borderWidth: 1, 
-        borderStyle: "solid",
+        // borderColor: colors.white,
+        // borderWidth: 1, 
+        // borderStyle: "solid",
+        shadowColor: colors.white,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
     }, 
 
     playIcon: {

@@ -1,9 +1,11 @@
 import React, { Component } from 'react'; 
+import { Ionicons } from '@expo/vector-icons';
 import {
+    colors, 
   buttons,
   containers,
   styles, 
-  text
+    text, 
 } from '../resources/css/style';
 
 import {
@@ -25,11 +27,12 @@ export default function SendFile({navigation}: {navigation: any}){
                 <TouchableOpacity>
                     <Text style={[buttons.chooseFile, styles.border]}></Text>
                 </TouchableOpacity>
+                
             </View>
             
             <View style={[containers.container, containers.playButtonContainer]} >
                 <TouchableOpacity style={[buttons.play]}>
-                    <Text style={styles.playIcon}></Text>
+                    <Ionicons name="md-play" size={75} color={colors.white} />
                 </TouchableOpacity>
 
             </View>

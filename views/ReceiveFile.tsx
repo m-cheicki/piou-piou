@@ -1,35 +1,33 @@
 import React, { Component } from 'react'; 
+import { Ionicons } from '@expo/vector-icons';
 import {
+    colors, 
   buttons,
   containers,
   styles, 
-  text
+    text, 
 } from '../resources/css/style';
-
 import {
   Text,
   View,
   SafeAreaView,
   TouchableOpacity
 } from 'react-native';
+import Header  from './Header';
+
 
 export default function ReceiveFile({navigation}: {navigation: any}){
     return (
         <SafeAreaView style={[containers.container]}>
-            <View style={[containers.container, containers.header]} >
-                <Text style={[text.title]}>PIOU PIOU</Text>
-                {/* <TouchableOpacity>
-                    <Text style={[buttons.settings, styles.border]}></Text>
-                </TouchableOpacity> */}
-            </View>
+            <Header />
 
-            <View style={[containers.container, containers.sendFile]} >
+            <View style={[containers.container, containers.receiveFile]} >
                 <Text style={[text.mainActionTitle, text.salmonText]}>Receive a file</Text>
             </View>
 
             <View style={[containers.container, containers.playButtonContainer]} >
                 <TouchableOpacity style={[buttons.play]}>
-                    <Text style={styles.playIcon}></Text>
+                    <Ionicons name="md-play" size={75} color={colors.white} />
                 </TouchableOpacity>
 
             </View>
