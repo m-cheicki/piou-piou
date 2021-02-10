@@ -16,22 +16,24 @@ export const buttons = StyleSheet.create({
         justifyContent: "center", 
         backgroundColor: colors.black,
         color : colors.white, 
-        padding: 12, 
-        
-    },
-    chooseFile: {
-        height: 48, 
-        marginVertical: 16, 
+        padding: 4, 
+        marginVertical: 12, 
+        borderRadius: 8
     }, 
     play: {
-        backgroundColor: colors.yellow,
-        color: colors.white, 
+        backgroundColor: colors.black,
+        color: colors.yellow, 
         width: 125,  
         height: 125, 
         borderRadius: 150, 
         paddingVertical: 25,
         paddingLeft: 45,
     },
+    selectFile: {
+        // backgroundColor: colors.salmon,
+        padding: 10,
+        width: "100%", 
+    }, 
     settings: {
         backgroundColor: colors.black,
         color: colors.white, 
@@ -100,6 +102,9 @@ export const text = StyleSheet.create({
         fontSize: 20, 
         color: colors.blue, 
     }, 
+    whiteText: {
+        color: colors.white
+    }
 }); 
 
 /**
@@ -163,28 +168,28 @@ export const styles = StyleSheet.create({
         shadowRadius: 10,
     },
     border: {
-        // borderColor: colors.white,
-        // borderWidth: 1, 
-        // borderStyle: "solid",
+        borderColor: colors.white,
+        borderWidth: 1, 
+        borderStyle: "solid",
         shadowColor: colors.white,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.8,
         shadowRadius: 2,
-        elevation: 1,
+        //elevation: 1,
     }, 
 
-    playIcon: {
-        color: colors.white, 
-        marginHorizontal: 42, 
-        marginVertical: 42, 
-        width: 40, 
-        height: 40,
-        borderColor: colors.white,
-        borderWidth: 1, 
-        borderStyle: "solid",
-        fontSize: 48,
-        padding: 0, 
-    }, 
+    // playIcon: {
+    //     color: colors.yellow, 
+    //     marginHorizontal: 42, 
+    //     marginVertical: 42, 
+    //     width: 40, 
+    //     height: 40,
+    //     borderColor: colors.white,
+    //     borderWidth: 1, 
+    //     borderStyle: "solid",
+    //     fontSize: 48,
+    //     padding: 0, 
+    // }, 
 });
 
 

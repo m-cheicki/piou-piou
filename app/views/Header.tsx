@@ -4,7 +4,8 @@ import {
   View,
 SafeAreaView,
 TouchableOpacity, 
-  Image
+  Image,
+  LogBox
 } from 'react-native';
 import {
     colors,
