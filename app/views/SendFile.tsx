@@ -15,7 +15,6 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-
 import Header from './Header';
 import SelectFile from '../components/SelectFile';
 import * as FileSystem from 'expo-file-system';
@@ -32,7 +31,7 @@ export default class SendFile extends Component<any, any> {
             soundFiles: [],
             enableConvert: false,
             base64Data: null,
-            selectedDataSize: 0
+            selectedDataSize: 0, 
         }
 
         this._getFileInStorage()
@@ -61,10 +60,8 @@ export default class SendFile extends Component<any, any> {
     }
 
     private _onSelectData = (base64: string) => {
-        console.log("SELECTED DATA"); 
-
         if (base64) {
-            console.log('Data selected')
+            console.log(base64)
             this.setState({ selectedDataSize: base64.length })
             this.setState({ base64Data: base64 })
             this.setState({ enableConvert: true })

@@ -31,8 +31,9 @@ export const buttons = StyleSheet.create({
     },
     selectFile: {
         // backgroundColor: colors.salmon,
-        padding: 10,
+        // padding: 10,
         width: "100%", 
+        height: 48
     }, 
     settings: {
         backgroundColor: colors.black,

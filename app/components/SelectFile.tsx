@@ -1,19 +1,13 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system';
 import { Base64 } from "../helpers/base64";
-
-import {
-    colors, 
-  buttons,
-  containers,
-  styles, 
-    text, 
-} from '../resources/css/style';
+import Shadow from "shadows-rn"; 
+import {buttons, text} from '../resources/css/style';
 
 export interface SelectDataProps {
-    onSelectData?: (base64: string) => void
+    onSelectData?: (base64: string) => void, 
 }
 
 export default class SelectDataComponent extends Component<SelectDataProps, any> {
@@ -29,6 +23,7 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
         if (file) {
             const uri: string = (file as any).uri
             const base64 = await this._reafFile(uri)
+            const filename = (file as any).name
 
             if (base64) {
                 this._createData('base64', base64)
@@ -56,8 +51,37 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
 
     public render = () => {
         return (
-            <TouchableOpacity style={[buttons.button, buttons.selectFile,styles.border]} onPress={this._selectFile}>
-                <Text style={[text.whiteText]}>Choose a file</Text>
+            <TouchableOpacity style={[buttons.button, buttons.selectFile]} onPress={this._selectFile}>
+                <Shadow
+                    style={{
+                        width: "100%",
+                        height: 48,
+                        borderRadius: 8, 
+                        padding: 4, 
+                    }}
+
+                    shadows = {
+                        [
+                            {
+                                offsetX: 5,
+                                offsetY: -5,
+                                radius: 5,
+                                color: "#232323"
+                            }, 
+                            {
+                                offsetX: -5,
+                                offsetY: 5,
+                                radius: 5,
+                                color: "#424242"
+                            },
+                        ]
+                    }
+                    inset = {false}
+                >
+        
+                    <Text style={[text.whiteText]}>Choose a file</Text>
+    
+                </Shadow>
             </TouchableOpacity>
         )
     }
