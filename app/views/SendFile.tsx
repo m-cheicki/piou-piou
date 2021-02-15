@@ -3,7 +3,8 @@ import { Ionicons } from '@expo/vector-icons';
 import {
     colors, 
   buttons,
-  containers,
+    containers,
+  shadows, 
   styles, 
     text, 
 } from '../resources/css/style';
@@ -18,6 +19,10 @@ import {
 import Header from './Header';
 import SelectFile from '../components/SelectFile';
 import * as FileSystem from 'expo-file-system';
+import PlayButton from '../components/PlayButton'; 
+import Shadow from "shadows-rn"; 
+
+
 
 
 export default class SendFile extends Component<any, any> {
@@ -215,11 +220,7 @@ export default class SendFile extends Component<any, any> {
                     <Text>Data length : {this.state.selectedDataSize} caracters</Text>
                 </View>
             
-                <View style={[containers.container, containers.playButtonContainer]} >
-                    <TouchableOpacity style={[buttons.play, styles.border]}>
-                        <Ionicons name="md-play" size={75} color={colors.yellow} />
-                    </TouchableOpacity>
-                </View>
+                <PlayButton />
 
                 <View style={[containers.container, containers.receiveFile]} >
                     <TouchableOpacity style={[buttons.button, styles.border]} onPress={() => this.props.navigation.navigate('ReceiveFile')}>

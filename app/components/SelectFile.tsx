@@ -4,7 +4,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system';
 import { Base64 } from "../helpers/base64";
 import Shadow from "shadows-rn"; 
-import {buttons, text} from '../resources/css/style';
+import {buttons, shadows,text} from '../resources/css/style';
 
 export interface SelectDataProps {
     onSelectData?: (base64: string) => void, 
@@ -60,22 +60,7 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
                         padding: 4, 
                     }}
 
-                    shadows = {
-                        [
-                            {
-                                offsetX: 5,
-                                offsetY: -5,
-                                radius: 5,
-                                color: "#232323"
-                            }, 
-                            {
-                                offsetX: -5,
-                                offsetY: 5,
-                                radius: 5,
-                                color: "#424242"
-                            },
-                        ]
-                    }
+                    shadows = {[shadows.light, shadows.dark]}
                     inset = {false}
                 >
         

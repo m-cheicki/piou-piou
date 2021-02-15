@@ -1,4 +1,3 @@
-import { SortOutlined } from "@material-ui/icons";
 import {StyleSheet } from "react-native";
 
 // Color palette
@@ -9,6 +8,24 @@ export const colors = {
     "blue": "#0892A5", 
     "salmon" : "#FF785A"
 }; 
+
+export const shadows = {
+    light : {
+        offsetX: -12,
+        offsetY: -12,
+        blur: 30, 
+        radius: 30,
+        color: "#383838"
+    }, 
+    dark: {
+        offsetX: 10,
+        offsetY: 10,
+        blur: 30, 
+        radius: 30,
+        color: "#262626"
+    }
+}
+
 
 export const buttons = StyleSheet.create({
     button: {
@@ -26,8 +43,8 @@ export const buttons = StyleSheet.create({
         width: 125,  
         height: 125, 
         borderRadius: 150, 
-        paddingVertical: 25,
-        paddingLeft: 45,
+        //paddingVertical: 25,
+        //paddingLeft: 45,
     },
     selectFile: {
         // backgroundColor: colors.salmon,
