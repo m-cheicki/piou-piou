@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system';
 import { Base64 } from "../helpers/base64";
 import Shadow from "shadows-rn"; 
-import {buttons, shadows,text} from '../resources/css/style';
+import {buttons, containers, shadows,text} from '../resources/css/style';
 
 export interface SelectDataProps {
     onSelectData?: (base64: string) => void, 
@@ -63,9 +63,9 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
                     shadows = {[shadows.light, shadows.dark]}
                     inset = {false}
                 >
-        
-                    <Text style={[text.whiteText]}>Choose a file</Text>
-    
+                    <View style={[containers.chooseFile]}>
+                        <Text style={[text.whiteText]}>Choose a file</Text>
+                    </View>
                 </Shadow>
             </TouchableOpacity>
         )

@@ -69,6 +69,11 @@ export const containers = StyleSheet.create({
         backgroundColor: colors.black,
         paddingVertical: 12,
     }, 
+    button: {
+        width: 175,
+        height: 48,
+        borderRadius: 16,
+    },
     header: {
         marginTop: 18,
         // backgroundColor: colors.salmon,
@@ -82,8 +87,18 @@ export const containers = StyleSheet.create({
         flexGrow: 2, 
         alignItems: "center",
     },
-    playButtonIconContainer: {
-
+    chooseFile: {
+        height: '100%', 
+        flex: 1, 
+        justifyContent: "center", 
+        paddingLeft: 16, 
+    },
+    playButtonIcon: {
+        height: '100%', 
+        flex: 1, 
+        justifyContent: "center", 
+        alignItems: "center", 
+        paddingLeft: 10, 
     }, 
     receiveFile: {
         alignItems: "center",

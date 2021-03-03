@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
-import { Ionicons } from '@expo/vector-icons';
+import Shadow from "shadows-rn"; 
+
 import {
     colors, 
   buttons,
@@ -40,12 +41,19 @@ export default class ReceiveFile extends Component<any, any> {
 
                 <PlayButton />
 
-
                 <View style={[containers.container, containers.receiveFile]} >
-                    <TouchableOpacity style={[buttons.button, styles.border]} onPress={() => this.props.navigation.navigate(this.state.redirect)}>
-                        <Text style={[text.blueText, text.button]}>{this.state.buttonText}</Text>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate(this.state.redirect)}>
+                        <Shadow style={[containers.button]}
+                            shadows = {[shadows.light, shadows.dark]}
+                            inset = {false}
+                        >
+                            <View style={[containers.receiveFile]} >
+                                <Text style={[text.button, text.blueText]}>{this.state.buttonText}</Text>
+                            </View>
+                        </Shadow>
                     </TouchableOpacity>
                 </View>
+
             </SafeAreaView>
         )
     }

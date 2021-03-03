@@ -223,8 +223,15 @@ export default class SendFile extends Component<any, any> {
                 <PlayButton />
 
                 <View style={[containers.container, containers.receiveFile]} >
-                    <TouchableOpacity style={[buttons.button, styles.border]} onPress={() => this.props.navigation.navigate('ReceiveFile')}>
-                        <Text style={[text.button, text.salmonText]}>Receive a file</Text>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('ReceiveFile')}>
+                        <Shadow style={[containers.button]}
+                            shadows = {[shadows.light, shadows.dark]}
+                            inset = {false}
+                        >
+                            <View style={[containers.receiveFile]} >
+                                <Text style={[text.button, text.salmonText]}>Receive a file</Text>
+                            </View>
+                        </Shadow>
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
