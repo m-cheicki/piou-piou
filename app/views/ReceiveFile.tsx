@@ -17,9 +17,6 @@ import {
 
 import Header from './Header';
 import PlayButton from '../components/PlayButton'; 
-import Shadow from "shadows-rn"; 
-
-
 
 
 export default class ReceiveFile extends Component<any, any> {

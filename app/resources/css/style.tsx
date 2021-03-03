@@ -82,6 +82,9 @@ export const containers = StyleSheet.create({
         flexGrow: 2, 
         alignItems: "center",
     },
+    playButtonIconContainer: {
+
+    }, 
     receiveFile: {
         alignItems: "center",
         justifyContent: "center", 
@@ -125,34 +128,6 @@ export const text = StyleSheet.create({
     }
 }); 
 
-/**
- * Faire une variable pour : 
- * les ombres
- * Autres
- */
-
-// Shadows
-/* export const darkShadow = {
-    shadowColor: colors.black,
-    shadowOffset: {
-        width: 0,
-        height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-}; 
-
-export const lightShadow = {
-    shadowColor: colors.white,
-    shadowOffset: {
-        width: -2,
-        height: -2,
-    }, 
-    shadowOpacity: 0.03,
-    shadowRadius: 10,
-}
-*/
-
 export const shadowOpt = {
     width: 160,
     height: 170,
@@ -194,20 +169,7 @@ export const styles = StyleSheet.create({
         shadowOpacity: 0.8,
         shadowRadius: 2,
         //elevation: 1,
-    }, 
-
-    // playIcon: {
-    //     color: colors.yellow, 
-    //     marginHorizontal: 42, 
-    //     marginVertical: 42, 
-    //     width: 40, 
-    //     height: 40,
-    //     borderColor: colors.white,
-    //     borderWidth: 1, 
-    //     borderStyle: "solid",
-    //     fontSize: 48,
-    //     padding: 0, 
-    // }, 
+    }
 });
 
 

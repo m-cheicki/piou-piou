@@ -29,7 +29,9 @@ export default class PlayButton extends Component{
                         shadows={[shadows.light, shadows.dark]}
                         inset={false}
                     >
-                        <Ionicons name="md-play" size={75} color={colors.yellow} />
+                        <View style={[styles.border]}>
+                            <Ionicons name="md-play" size={75} color={colors.yellow} />
+                        </View>
                     </Shadow>
                 </TouchableOpacity>
             </View>
