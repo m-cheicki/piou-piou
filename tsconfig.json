@@ -8,6 +8,10 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "strict": true, 
-    "target": "ES5"
+    "target": "ES5", 
+    "typeRoots": [
+      "./node_modules/@types",
+      "./@types"
+    ]
   }
 }

@@ -24,10 +24,6 @@ export default class ReceiveFile extends Component<any, any> {
 
     constructor (props: any) {
         super(props)
-        this.state = {
-            redirect: 'SendFile', 
-            buttonText : 'Send a file'
-        }
     }
 
     render = () => {
@@ -42,13 +38,13 @@ export default class ReceiveFile extends Component<any, any> {
                 <PlayButton />
 
                 <View style={[containers.container, containers.receiveFile]} >
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate(this.state.redirect)}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SendFile')}>
                         <Shadow style={[containers.button]}
                             shadows = {[shadows.light, shadows.dark]}
                             inset = {false}
                         >
                             <View style={[containers.receiveFile]} >
-                                <Text style={[text.button, text.blueText]}>{this.state.buttonText}</Text>
+                                <Text style={[text.button, text.blueText]}>Send a file</Text>
                             </View>
                         </Shadow>
                     </TouchableOpacity>
