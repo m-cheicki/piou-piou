@@ -1,29 +1,14 @@
 import React, { Component } from 'react'; 
-import { Ionicons } from '@expo/vector-icons';
-import {
-    colors, 
-  buttons,
-    containers,
-  shadows, 
-  styles, 
-    text, 
-} from '../resources/css/style';
-
-import {
-  Text,
-  View,
-  SafeAreaView,
-  TouchableOpacity
-} from 'react-native';
-
+import { containers, shadows, text } from '../resources/css/style';
+import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
 import Header from './Header';
 import SelectFile from '../components/SelectFile';
 import * as FileSystem from 'expo-file-system';
 import PlayButton from '../components/PlayButton'; 
-import Shadow from "shadows-rn"; 
-
-
-
+import Shadow from "shadows-rn";
+import { Base64 } from "../helpers/base64";
+import { WaveBuilder, SampleRateType, BitsPerSampleType, Wave, WAVEncoder, WAVEncoderResult } from "../helpers/wavEncoder";
+import { BitSeparator } from "../helpers/bitSeparator"; 
 
 export default class SendFile extends Component<any, any> {
     private readonly dataStorageDirectory: string = "data/"
@@ -93,8 +78,8 @@ export default class SendFile extends Component<any, any> {
 
             for (let i = 0; i < base64.length; i++) {
                 const char: string = base64[i]
-                // const val: number = Base64.keyStr.indexOf(char)
-                // bytes.push(val)
+                const val: number = Base64.keyStr.indexOf(char)
+                bytes.push(val)
             }
 
             console.log('Generating audio')
@@ -113,7 +98,7 @@ export default class SendFile extends Component<any, any> {
                 this._generateFrequencyShiftAudio(bytes)
                 break;
             default:
-                alert("Audio type not known")
+                alert("Unknown audio type")
                 break;
         }
     }
@@ -123,20 +108,20 @@ export default class SendFile extends Component<any, any> {
         const amplitude: number = 90
         const freqRange = 18000 - 100
 
-        // const wb: WaveBuilder = new WaveBuilder(1, SampleRateType.RATE_44100, BitsPerSampleType.BIT_8)
-        // let notes: Wave[] = []
+        const wb: WaveBuilder = new WaveBuilder(1, SampleRateType.RATE_44100, BitsPerSampleType.BIT_8)
+        let notes: Wave[] = []
 
 
         for (let i = 0; i < bytes.length; i++) {
             const val = bytes[i]
             const freq: number = val * (freqRange / 64) + 100
-            // const note = wb.generatePeriod(freq, phaseShift, amplitude)
-            // notes.push(note)
+            const note = wb.generatePeriod(freq, phaseShift, amplitude)
+            notes.push(note)
         }
 
         console.log('Generating sound')
-        // const wave = WAVEncoder.generateSound(notes)
-        // this._createAudioFile(wave)
+        const wave = WAVEncoder.generateSound(notes)
+        this._createAudioFile(wave)
     }
 
     private _generatePhaseShiftAudio = (bytes: number[]) => {
@@ -144,11 +129,11 @@ export default class SendFile extends Component<any, any> {
         let binary: number[] = []
         for (let i = 0; i < bytes.length; i++) {
             const val = bytes[i]
-            //binary.push(...BitSeparator.split(val, 1, 6))
+            binary.push(...BitSeparator.split(val, 1, 6))
         }
 
-        // const wb: WaveBuilder = new WaveBuilder(1, SampleRateType.RATE_44100, BitsPerSampleType.BIT_8)
-        // let notes: Wave[] = []
+        const wb: WaveBuilder = new WaveBuilder(1, SampleRateType.RATE_44100, BitsPerSampleType.BIT_8)
+        let notes: Wave[] = []
 
         const freq: number = 523.25
         const amplitude: number = 90
@@ -156,25 +141,25 @@ export default class SendFile extends Component<any, any> {
         console.log('Converting data into binary array')
         for (let i = 0; i < binary.length; i++) {
             const phase: number = binary[i] == 0 ? 0 : Math.PI
-            // const note = wb.generatePeriod(freq, phase, amplitude)
-            // notes.push(note)
+            const note = wb.generatePeriod(freq, phase, amplitude)
+            notes.push(note)
         }
 
-        // console.log(notes.length)
+        console.log(notes.length)
 
         console.log('Generating sound')
-        // const wave = WAVEncoder.generateSound(notes)
-        // this._createAudioFile(wave)
+        const wave = WAVEncoder.generateSound(notes)
+        this._createAudioFile(wave)
     }
 
-    /*
+    
     private _createAudioFile = async (wave: WAVEncoderResult) => {
         if (wave.isCorrect) {
             console.log('Generating audio file')
 
             const data = Uint8Array.from(wave.data)
 
-            // converting data into a string
+            // Convert data to String
             let str: string = ''
             for (let i = 0; i < data.length; i++) {
                 const val = data[i]
@@ -182,7 +167,7 @@ export default class SendFile extends Component<any, any> {
                 str += char
             }
 
-            // convert to base64
+            // Convert String to Base64
             const base64Content: string = Base64.encode(str)
 
             let fileDirectory: string = FileSystem.documentDirectory + this.dataStorageDirectory
@@ -203,7 +188,7 @@ export default class SendFile extends Component<any, any> {
             }
         }
     }
-*/
+
     private _onDeleteFile = async () => {
         await this._getFileInStorage()
     }
