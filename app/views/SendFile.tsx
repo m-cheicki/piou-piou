@@ -1,14 +1,18 @@
-import React, { Component } from 'react'; 
-import { containers, shadows, text } from '../resources/css/style';
-import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
-import Header from './Header';
-import SelectFile from '../components/SelectFile';
+import React, { Component } from 'react';
+import {SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import * as FileSystem from 'expo-file-system';
-import PlayButton from '../components/PlayButton'; 
 import Shadow from "shadows-rn";
+
 import { Base64 } from "../helpers/base64";
-import { WaveBuilder, SampleRateType, BitsPerSampleType, Wave, WAVEncoder, WAVEncoderResult } from "../helpers/wavEncoder";
+import { BitsPerSampleType, SampleRateType, Wave, WaveBuilder, WAVEncoder, WAVEncoderResult } from "../helpers/wavEncoder";
 import { BitSeparator } from "../helpers/bitSeparator"; 
+
+import Header from './Header';
+import PlayButton from '../components/PlayButton'; 
+import SelectFile from '../components/SelectFile';
+
+import { containers, shadows, text } from '../resources/css/style';
+
 
 export default class SendFile extends Component<any, any> {
     private readonly dataStorageDirectory: string = "data/"
