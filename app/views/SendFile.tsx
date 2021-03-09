@@ -55,7 +55,8 @@ export default class SendFile extends Component<any, any> {
 
     private _onSelectData = (base64: string) => {
         if (base64) {
-            console.log(base64)
+            // console.log(base64)
+            console.log("BASE64 Length : " + base64.length)
             this.setState({ selectedDataSize: base64.length })
             this.setState({ base64Data: base64 })
             this.setState({ enableConvert: true })
@@ -198,6 +199,17 @@ export default class SendFile extends Component<any, any> {
     }
 
     render = () => {
+        let datasize
+        let playButton
+
+        if (this.state.selectedDataSize > 0 ) {
+            datasize = <Text>Data length : {this.state.selectedDataSize} caracters</Text>
+            playButton = <PlayButton disabled="false"/>
+        }
+        else {
+            playButton = <PlayButton disabled="true"/>
+        }
+
         return (
             <SafeAreaView style={[containers.container]}>
 
@@ -205,8 +217,8 @@ export default class SendFile extends Component<any, any> {
 
                 <View style={[containers.container, containers.sendFile]} >
                     <Text style={[text.mainActionTitle, text.blueText]}>Send a file</Text>
-                    <SelectFile onSelectData={this._onSelectData}/>
-                    <Text>Data length : {this.state.selectedDataSize} caracters</Text>
+                    <SelectFile onSelectData={this._onSelectData} />
+                    {datasize}
                 </View>
             
                 <PlayButton />

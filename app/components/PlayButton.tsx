@@ -13,8 +13,18 @@ import {
 } from '../resources/css/style';
 
 
+export interface PlayButtonState {
+    disabled?: (isDisabled: string) => void, 
+}
 
-export default class PlayButton extends Component{
+export default class PlayButton extends Component<PlayButtonState>{
+
+    public constructor(props: PlayButtonState) {
+        super(props)
+        this.state = {}
+    }
+
+
     public render = () => {
         return (
             <View style={[containers.container, containers.playButtonContainer]} >
@@ -30,10 +40,11 @@ export default class PlayButton extends Component{
                         inset={false}
                     >
                         <View style={[containers.playButtonIcon]}>
-                            <Ionicons name="md-play" size={70} color={colors.yellow} />
+                            <Ionicons name="md-play" size={70} color={colors.yellow} style={{opacity: .5}} />
                         </View>
                     </Shadow>
                 </TouchableOpacity>
+                <Text>{this.props.disabled}</Text>
             </View>
         )
     }

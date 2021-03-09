@@ -15,7 +15,9 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
     public constructor(props: SelectDataProps) {
         super(props)
 
-        this.state = {}
+        this.state = {
+            filename: null, 
+        }
     }
 
     private _selectFile = async () => {
@@ -24,7 +26,7 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
             const uri: string = (file as any).uri
             const base64 = await this._reafFile(uri)
             const filename = (file as any).name
-
+            this.setState({ filename : filename })
             if (base64) {
                 this._createData('base64', base64)
             }
@@ -50,6 +52,16 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
     
 
     public render = () => {
+
+        let containerText
+
+        if (this.state.selectedDataSize > 0 ) {
+            containerText = this.state.filename
+        }
+        else {
+            containerText = "Choose a file"
+        }
+
         return (
             <TouchableOpacity style={[buttons.button, buttons.selectFile]} onPress={this._selectFile}>
                 <Shadow
@@ -64,7 +76,7 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
                     inset = {false}
                 >
                     <View style={[containers.chooseFile]}>
-                        <Text style={[text.whiteText]}>Choose a file</Text>
+                        <Text style={[text.whiteText]}>{containerText}</Text>
                     </View>
                 </Shadow>
             </TouchableOpacity>
