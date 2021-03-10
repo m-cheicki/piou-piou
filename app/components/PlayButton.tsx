@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import Shadow from "shadows-rn";
 
-import Shadow from "shadows-rn"; 
-import {
-    colors, 
-  buttons,
-    containers,
-  shadows,  
-} from '../resources/css/style';
-
+import { colors, buttons, containers, shadows } from '../resources/css/style';
 
 export interface PlayButtonState {
     disabled?: boolean, 
