@@ -43,12 +43,8 @@ export const buttons = StyleSheet.create({
         width: 125,  
         height: 125, 
         borderRadius: 150, 
-        //paddingVertical: 25,
-        //paddingLeft: 45,
     },
     selectFile: {
-        // backgroundColor: colors.salmon,
-        // padding: 10,
         width: "100%", 
         height: 48
     }, 
@@ -74,6 +70,12 @@ export const containers = StyleSheet.create({
         height: 48,
         borderRadius: 16,
     },
+    chooseFile: {
+        height: '100%', 
+        flex: 1, 
+        justifyContent: "center", 
+        paddingLeft: 16, 
+    },
     header: {
         marginTop: 18,
         // backgroundColor: colors.salmon,
@@ -87,19 +89,19 @@ export const containers = StyleSheet.create({
         flexGrow: 2, 
         alignItems: "center",
     },
-    chooseFile: {
-        height: '100%', 
-        flex: 1, 
-        justifyContent: "center", 
-        paddingLeft: 16, 
-    },
     playButtonIcon: {
         height: '100%', 
         flex: 1, 
         justifyContent: "center", 
         alignItems: "center", 
         paddingLeft: 10, 
-    }, 
+    },
+    playButtonShadow: {
+        backgroundColor: colors.black,
+        width: 125,
+        height: 125,
+        borderRadius: 100,
+    },
     receiveFile: {
         alignItems: "center",
         justifyContent: "center", 

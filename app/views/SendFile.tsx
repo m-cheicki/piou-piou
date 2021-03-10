@@ -204,10 +204,10 @@ export default class SendFile extends Component<any, any> {
 
         if (this.state.selectedDataSize > 0 ) {
             datasize = <Text>Data length : {this.state.selectedDataSize} caracters</Text>
-            playButton = <PlayButton/>
+            playButton = <PlayButton disabled={false}/>
         }
         else {
-            playButton = <PlayButton/>
+            playButton = <PlayButton disabled={true}/>
         }
 
         return (
@@ -221,7 +221,7 @@ export default class SendFile extends Component<any, any> {
                     {datasize}
                 </View>
             
-                <PlayButton />
+                {playButton}
 
                 <View style={[containers.container, containers.receiveFile]} >
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('ReceiveFile')}>
