@@ -204,10 +204,10 @@ export default class SendFile extends Component<any, any> {
 
         if (this.state.selectedDataSize > 0 ) {
             datasize = <Text>Data length : {this.state.selectedDataSize} caracters</Text>
-            playButton = <PlayButton disabled="false"/>
+            playButton = <PlayButton/>
         }
         else {
-            playButton = <PlayButton disabled="true"/>
+            playButton = <PlayButton/>
         }
 
         return (

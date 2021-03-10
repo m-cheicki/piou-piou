@@ -16,7 +16,7 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
         super(props)
 
         this.state = {
-            filename: null, 
+            filename: "Choose a file", 
         }
     }
 
@@ -52,16 +52,6 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
     
 
     public render = () => {
-
-        let containerText
-
-        if (this.state.selectedDataSize > 0 ) {
-            containerText = this.state.filename
-        }
-        else {
-            containerText = "Choose a file"
-        }
-
         return (
             <TouchableOpacity style={[buttons.button, buttons.selectFile]} onPress={this._selectFile}>
                 <Shadow
@@ -76,7 +66,7 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
                     inset = {false}
                 >
                     <View style={[containers.chooseFile]}>
-                        <Text style={[text.whiteText]}>{containerText}</Text>
+                        <Text style={[text.whiteText]}>{this.state.filename}</Text>
                     </View>
                 </Shadow>
             </TouchableOpacity>
