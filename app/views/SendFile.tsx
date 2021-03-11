@@ -4,7 +4,6 @@ import * as FileSystem from 'expo-file-system';
 import Shadow from "shadows-rn";
 
 import { Base64 } from "../helpers/base64";
-import { BitsPerSampleType, SampleRateType, Wave, WaveBuilder, WAVEncoder, WAVEncoderResult } from "../helpers/wavEncoder";
 import { BitSeparator } from "../helpers/bitSeparator"; 
 
 import Header from './Header';
@@ -96,11 +95,11 @@ export default class SendFile extends Component<any, any> {
         switch (audioType) {
             case 'phase_shift':
                 console.log('-> phase shift')
-                this._generatePhaseShiftAudio(bytes)
+                // this._generatePhaseShiftAudio(bytes)
                 break;
             case 'freq_shift':
                 console.log('-> frequency shift')
-                this._generateFrequencyShiftAudio(bytes)
+                // this._generateFrequencyShiftAudio(bytes)
                 break;
             default:
                 alert("Unknown audio type")
@@ -108,6 +107,7 @@ export default class SendFile extends Component<any, any> {
         }
     }
 
+    /*
     private _generateFrequencyShiftAudio = (bytes: number[]) => {
         const phaseShift: number = 0
         const amplitude: number = 90
@@ -128,7 +128,9 @@ export default class SendFile extends Component<any, any> {
         const wave = WAVEncoder.generateSound(notes)
         this._createAudioFile(wave)
     }
-
+    */
+    
+    /*
     private _generatePhaseShiftAudio = (bytes: number[]) => {
         console.log('Converting data array into binary array')
         let binary: number[] = []
@@ -156,8 +158,9 @@ export default class SendFile extends Component<any, any> {
         const wave = WAVEncoder.generateSound(notes)
         this._createAudioFile(wave)
     }
-
+    */
     
+    /*
     private _createAudioFile = async (wave: WAVEncoderResult) => {
         if (wave.isCorrect) {
             console.log('Generating audio file')
@@ -193,7 +196,8 @@ export default class SendFile extends Component<any, any> {
             }
         }
     }
-
+    */
+    
     private _onDeleteFile = async () => {
         await this._getFileInStorage()
     }
