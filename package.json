@@ -21,7 +21,8 @@
     "react-native-gesture-handler": "^1.7.0",
     "react-native-screens": "^2.10.1",
     "react-native-webview": "^11.2.4",
-    "shadows-rn": "^2.2.0"
+    "shadows-rn": "^2.2.0",
+    "xmldom": "^0.5.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
