@@ -1,4 +1,4 @@
-import {StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 // Color palette
 export const colors = {
@@ -78,7 +78,6 @@ export const containers = StyleSheet.create({
     },
     header: {
         marginTop: 18,
-        // backgroundColor: colors.salmon,
         flexGrow: 1, 
         flexDirection: "row", 
         justifyContent: "space-between", 
@@ -121,7 +120,7 @@ export const text = StyleSheet.create({
         fontWeight: "bold", 
         textTransform: "uppercase", 
         paddingVertical: 8,  
-        paddingHorizontal: 24
+        paddingHorizontal: 24,
     }, 
     mainActionTitle: {
         fontWeight: "normal", 
@@ -145,47 +144,11 @@ export const text = StyleSheet.create({
     }
 }); 
 
-export const shadowOpt = {
-    width: 160,
-    height: 170,
-    color: "#000",
-    border: 2,
-    radius: 3,
-    opacity: 0.2,
-    x: 0,
-    y: 3,
-    style: { marginVertical: 5 }
- };
-
-
 export const styles = StyleSheet.create({
-    darkShadow: {
-        shadowColor: "#000", 
-        shadowOffset: {
-            width: 12,
-            height: 12,
-        }, 
-        shadowOpacity: 0.25,
-        shadowRadius: 10,
-    }, 
-    lightShadow: {
-        shadowColor: "#FFF", 
-        shadowOffset: {
-            width: -2,
-            height: -2,
-        }, 
-        shadowOpacity: 0.03,
-        shadowRadius: 10,
-    },
     border: {
         borderColor: colors.white,
         borderWidth: 1, 
         borderStyle: "solid",
-        shadowColor: colors.white,
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        //elevation: 1,
     }
 });
 
