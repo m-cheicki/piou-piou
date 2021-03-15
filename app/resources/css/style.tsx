@@ -15,14 +15,14 @@ export const shadows = {
         offsetY: -12,
         blur: 30, 
         radius: 30,
-        color: "#383838"
+        color: "#3F3F3F80"
     }, 
     dark: {
         offsetX: 10,
         offsetY: 10,
         blur: 30, 
         radius: 30,
-        color: "#262626"
+        color: "#212121"
     }
 }
 
