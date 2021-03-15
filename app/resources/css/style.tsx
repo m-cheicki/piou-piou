@@ -118,10 +118,11 @@ export const text = StyleSheet.create({
     }, 
     button: {
         textTransform: "uppercase", 
-        paddingVertical: 8,  
+        paddingVertical: 12,  
         paddingHorizontal: 24,
-        fontFamily: 'Montserrat Medium',
-        letterSpacing: 2
+        fontFamily: 'Montserrat',
+        letterSpacing: 2,
+        fontSize: 12
     },
     buttonChooseFile: {
         fontFamily: 'Montserrat Medium',
