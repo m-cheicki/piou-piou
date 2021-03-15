@@ -19,12 +19,7 @@ import typo from '../resources/images/typo.png';
 export default function Header(){
     return(
         <View style={[containers.container, containers.header]} >
-            <Image source={typo} style={{ width: 150, height: 75}} />
-            {/*
-            <Text style={[text.title]}>PIOU PIOU   dsdsd</Text>
-                <TouchableOpacity>
-                <Text style={[buttons.settings, styles.border]}></Text>
-            </TouchableOpacity> */}
+            <Image source={typo} style={{ width: 128, height: 64, top: 12}} />
         </View>
     )
 }

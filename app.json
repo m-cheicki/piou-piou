@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/splash_icon.png",
     "splash": {
-      "image": "./assets/splash_icon.png",
+      "image": "./assets/splash_pioupiou.png",
       "resizeMode": "contain",
       "backgroundColor": "#323232"
     },
