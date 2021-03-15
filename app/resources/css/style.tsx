@@ -117,27 +117,24 @@ export const text = StyleSheet.create({
         color: colors.blue, 
     }, 
     button: {
-        fontWeight: "bold", 
         textTransform: "uppercase", 
         paddingVertical: 8,  
         paddingHorizontal: 24,
-    }, 
+        fontFamily: 'Montserrat Medium',
+        letterSpacing: 2
+    },
+    buttonChooseFile: {
+        fontFamily: 'Montserrat Medium',
+        letterSpacing: 2
+    },
     mainActionTitle: {
         fontWeight: "normal", 
-        fontSize: 24, 
+        fontSize: 24,
+        fontFamily: 'Montserrat',
+        marginVertical: 24, 
     }, 
     salmonText: {
         color: colors.salmon, 
-    }, 
-    title: {
-        fontWeight: "bold", 
-        fontSize: 20, 
-        color: colors.yellow, 
-    }, 
-    sendFileTitle: {
-        fontWeight: "bold", 
-        fontSize: 20, 
-        color: colors.blue, 
     }, 
     whiteText: {
         color: colors.white

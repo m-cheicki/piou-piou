@@ -66,7 +66,7 @@ export default class SelectDataComponent extends Component<SelectDataProps, any>
                     inset = {false}
                 >
                     <View style={[containers.chooseFile]}>
-                        <Text style={[text.whiteText]}>{this.state.filename}</Text>
+                        <Text style={[text.buttonChooseFile, text.whiteText]}>{this.state.filename}</Text>
                     </View>
                 </Shadow>
             </TouchableOpacity>
