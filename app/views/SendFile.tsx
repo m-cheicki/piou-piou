@@ -3,8 +3,12 @@ import {SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import Shadow from "shadows-rn";
 
-import { Base64 } from "../helpers/base64";
-import { BitSeparator } from "../helpers/bitSeparator"; 
+import * as fs from 'fs';
+import { Base64 } from '../helpers/base64';
+import { BitSeparator } from '../helpers/bitSeparator';
+import { SignalBuilder } from '../helpers/signalBuilder';
+import { concat, linspace, normalize } from '../helpers/tools';
+import { WAV } from '../helpers/wav';
 
 import Header from './Header';
 import PlayButton from '../components/PlayButton'; 
@@ -54,7 +58,6 @@ export default class SendFile extends Component<any, any> {
 
     private _onSelectData = (base64: string) => {
         if (base64) {
-            // console.log(base64)
             console.log("BASE64 Length : " + base64.length)
             this.setState({ selectedDataSize: base64.length })
             this.setState({ base64Data: base64 })
@@ -63,14 +66,6 @@ export default class SendFile extends Component<any, any> {
             console.log('Selected data is null')
             this.setState({ enableConvert: true })
         }
-    }
-
-    private _onConvertWithFreqShift = () => {
-        this._onConvert('freq_shift')
-    }
-
-    private _onConvertWithPhaseShift = () => {
-        this._onConvert('phase_shift')
     }
 
     private _onConvert = (audioType: string) => {
@@ -87,116 +82,10 @@ export default class SendFile extends Component<any, any> {
             }
 
             console.log('Generating audio')
-            this._generateAudio(bytes, audioType)
+            // this._generateAudio(bytes, audioType)
         }
     }
 
-    private _generateAudio = (bytes: number[], audioType: string) => {
-        switch (audioType) {
-            case 'phase_shift':
-                console.log('-> phase shift')
-                // this._generatePhaseShiftAudio(bytes)
-                break;
-            case 'freq_shift':
-                console.log('-> frequency shift')
-                // this._generateFrequencyShiftAudio(bytes)
-                break;
-            default:
-                alert("Unknown audio type")
-                break;
-        }
-    }
-
-    /*
-    private _generateFrequencyShiftAudio = (bytes: number[]) => {
-        const phaseShift: number = 0
-        const amplitude: number = 90
-        const freqRange = 18000 - 100
-
-        const wb: WaveBuilder = new WaveBuilder(1, SampleRateType.RATE_44100, BitsPerSampleType.BIT_8)
-        let notes: Wave[] = []
-
-
-        for (let i = 0; i < bytes.length; i++) {
-            const val = bytes[i]
-            const freq: number = val * (freqRange / 64) + 100
-            const note = wb.generatePeriod(freq, phaseShift, amplitude)
-            notes.push(note)
-        }
-
-        console.log('Generating sound')
-        const wave = WAVEncoder.generateSound(notes)
-        this._createAudioFile(wave)
-    }
-    */
-    
-    /*
-    private _generatePhaseShiftAudio = (bytes: number[]) => {
-        console.log('Converting data array into binary array')
-        let binary: number[] = []
-        for (let i = 0; i < bytes.length; i++) {
-            const val = bytes[i]
-            binary.push(...BitSeparator.split(val, 1, 6))
-        }
-
-        const wb: WaveBuilder = new WaveBuilder(1, SampleRateType.RATE_44100, BitsPerSampleType.BIT_8)
-        let notes: Wave[] = []
-
-        const freq: number = 523.25
-        const amplitude: number = 90
-
-        console.log('Converting data into binary array')
-        for (let i = 0; i < binary.length; i++) {
-            const phase: number = binary[i] == 0 ? 0 : Math.PI
-            const note = wb.generatePeriod(freq, phase, amplitude)
-            notes.push(note)
-        }
-
-        console.log(notes.length)
-
-        console.log('Generating sound')
-        const wave = WAVEncoder.generateSound(notes)
-        this._createAudioFile(wave)
-    }
-    */
-    
-    /*
-    private _createAudioFile = async (wave: WAVEncoderResult) => {
-        if (wave.isCorrect) {
-            console.log('Generating audio file')
-
-            const data = Uint8Array.from(wave.data)
-
-            // Convert data to String
-            let str: string = ''
-            for (let i = 0; i < data.length; i++) {
-                const val = data[i]
-                const char: string = String.fromCharCode(val)
-                str += char
-            }
-
-            // Convert String to Base64
-            const base64Content: string = Base64.encode(str)
-
-            let fileDirectory: string = FileSystem.documentDirectory + this.dataStorageDirectory
-            const currentDate = new Date().toJSON().replace(/[:.]/g, '_')
-            let fileUri = fileDirectory + "sound_" + currentDate + ".wav"
-
-            try {
-                const info = await FileSystem.getInfoAsync(fileDirectory)
-
-                if (!info.exists) {
-                    await FileSystem.makeDirectoryAsync(fileDirectory)
-                }
-
-                await FileSystem.writeAsStringAsync(fileUri, base64Content, { encoding: 'base64' })
-                await this._getFileInStorage()
-            } catch (error) {
-                console.log(error)
-            }
-        }
-    }
-    */
     
     private _onDeleteFile = async () => {
         await this._getFileInStorage()
