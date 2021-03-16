@@ -72,4 +72,15 @@ export class Base64 {
 
         return output
     }
+
+    public static base64_to_array = (base64: string) => {
+        base64 = base64.replace(/\=/gi, '')
+        let arr: number[] = []
+        for (let i = 0; i < base64.length; i++) {
+            const char = base64[i]
+            const index = Base64.keyStr.indexOf(char)
+            arr.push(index)
+        }
+        return arr
+    }
 }

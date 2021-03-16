@@ -1,3 +1,5 @@
+import { Statistic } from "./statistic"
+
 export function linspace(start: number, stop: number, cardinality: number) {
     let arr: number[] = []
     let step: number = (stop - start) / (cardinality - 1)
@@ -39,6 +41,24 @@ export function stdArr(values: number[]) {
 
         result /= values.length - 1
         result = Math.sqrt(result)
+    }
+    return result
+}
+
+export function concat(arr1: number[], arr2: number[]) {
+    let result: number[] = []
+    for (let i = 0; i < Math.max(arr1.length, arr2.length); i++) {
+        result.push((arr1[i] || 0) + (arr2[i] || 0))
+    }
+    return result
+}
+
+export function normalize(arr: number[], max_number: number) {
+    let result: number[] = []
+    const max: number = Statistic.max(arr)
+    for (let i = 0; i < arr.length; i++) {
+        const val: number = arr[i]
+        result.push(Math.round(val * (max_number / max)))
     }
     return result
 }
