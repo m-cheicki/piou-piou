@@ -68,9 +68,7 @@ export class SoundStorage {
         const currentDate = new Date().toJSON().replace(/[:.]/g, '_')
         const filename: string = output_folder + "sound_" + currentDate + ".wav"
 
-        const output_path = output_folder + filename
-
-        await FileSystem.writeAsStringAsync(output_path, base64Content, { encoding: 'base64' })
+        await FileSystem.writeAsStringAsync(filename, base64Content, { encoding: 'base64' })
 
         return filename
     }
