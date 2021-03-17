@@ -20,7 +20,7 @@ export class SoundStorage {
 
         const dir: string = FileSystem.documentDirectory + SoundStorage.DataStorageDir
         let files = await FileSystem.readDirectoryAsync(dir)
-        files = files.filter(x => x.match(/.wav|.3gp/))
+        files = files.filter((x: any) => x.match(/.wav|.3gp/))
 
         for (let i = 0; i < files.length; i++) {
             files[i] = dir + files[i]
