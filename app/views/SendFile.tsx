@@ -3,12 +3,14 @@ import {SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import Shadow from "shadows-rn";
 
-import * as fs from 'fs';
+import * as fs from 'react-native-fs';
 import { Base64 } from '../helpers/base64';
 import { BitSeparator } from '../helpers/bitSeparator';
 import { SignalBuilder } from '../helpers/signalBuilder';
 import { concat, linspace, normalize } from '../helpers/tools';
-import { WAV } from '../helpers/wav';
+import { WAV } from '../helpers/WAV';
+import * as AudioBuffer from "audio-buffer-from"; 
+import * as BufferToWav from "audiobuffer-to-wav"; 
 
 import Header from './Header';
 import PlayButton from '../components/PlayButton'; 
@@ -57,6 +59,7 @@ export default class SendFile extends Component<any, any> {
     }
 
     private _onSelectData = (base64: string) => {
+        base64 = "test"
         if (base64) {
             console.log("BASE64 Length : " + base64.length)
             this.setState({ selectedDataSize: base64.length })
@@ -108,8 +111,11 @@ export default class SendFile extends Component<any, any> {
         const signal: number[] = this._encode_base64_to_signal(message_b64, SAMPLE_RATE, BLOC_DURATION)
 
         const sound = WAV.encode(signal, 1, SAMPLE_RATE, BIT_PER_SAMPLE)
+        let buffer = AudioBuffer(sound, { context: AudioContext })
+        
 
-        fs.writeFileSync('tmp/test_encode.wav', sound, { encoding: null })
+        FileSystem.writeAsStringAsync(FileSystem.documentDirectory + '/test_encode.wav', sound, { encoding: null })
+        console.info(FileSystem.documentDirectory + 'test_encode.txt')
     }
 
     private _onConvert = () => {
@@ -133,10 +139,10 @@ export default class SendFile extends Component<any, any> {
 
         if (this.state.selectedDataSize > 0 ) {
             datasize = <Text>Data length : {this.state.selectedDataSize} caracters</Text>
-            playButton = <PlayButton disabled={false}/>
+            playButton = <PlayButton disabled={false} onPress={() => this._onConvert()}/>
         }
         else {
-            playButton = <PlayButton disabled={true}/>
+            playButton = <PlayButton disabled={true} onPress={() => console.log("You haven't chose a file")}/>
         }
 
         return (

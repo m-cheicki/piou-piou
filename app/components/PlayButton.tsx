@@ -3,10 +3,14 @@ import { TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import Shadow from "shadows-rn";
 
+import { SoundRecorder } from "../helpers/soundRecorder";
+
 import { colors, buttons, containers, shadows } from '../resources/css/style';
 
 export interface PlayButtonState {
-    disabled?: boolean, 
+    disabled: boolean,
+    onPress?: () => void, 
+    onStop?: (file: string) => void
 }
 
 export default class PlayButton extends Component<PlayButtonState>{
@@ -15,7 +19,6 @@ export default class PlayButton extends Component<PlayButtonState>{
         super(props)
         this.state = {}
     }
-
 
     public render = () => {
 
@@ -59,7 +62,7 @@ export default class PlayButton extends Component<PlayButtonState>{
 
         return (
             <View style={[containers.container, containers.playButtonContainer]} >
-                <TouchableOpacity style={[buttons.play]}>
+                <TouchableOpacity style={[buttons.play]} onPress={this.props.onPress}>
                     {playButton}
                 </TouchableOpacity>
             </View>
