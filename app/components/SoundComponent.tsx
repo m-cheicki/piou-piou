@@ -7,6 +7,7 @@ import { SoundPlayer } from "../helpers/soundPlayer";
 import { SoundStorage } from "../helpers/soundStorage";
 import { linspace, stdArr } from "../helpers/tools";
 import { WAV } from "../helpers/WAV";
+import { colors } from "../resources/css/style";
 
 export interface SoundProps {
     file: string,
@@ -127,11 +128,11 @@ export default class SoundComponent extends Component<SoundProps, SoundState> {
     public render = () => {
         return (
             <View>
-                <Text>{this.state.file}</Text>
-                <View>
-                    <Button onPress={this.play} title='Play' disabled={this.state.disableAction} color="#ececec" />
-                    <Button onPress={this.analyse} title='Analyse' disabled={this.state.disableAction} color="#ececec" />
-                    <Button onPress={this.delete} title='Delete' disabled={this.state.disableAction} color="#ececec" />
+                <Text style={{marginVertical:12}}>{this.state.file}</Text>
+                <View style={{flex:1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                    <Button onPress={this.play} title='Play' disabled={this.state.disableAction} color={colors.blue} />
+                    <Button onPress={this.analyse} title='Analyse' disabled={this.state.disableAction} color={colors.blue} />
+                    <Button onPress={this.delete} title='Delete' disabled={this.state.disableAction} color={colors.blue} />
                 </View>
                 <Spinner visible={this.state.disableAction} textContent={'Loading...'} />
             </View>

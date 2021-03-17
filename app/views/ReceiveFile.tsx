@@ -93,7 +93,21 @@ export default class ReceiveFile extends Component<any, any> {
     render = () => {
 
         let info
-        let file = <Text style={[text.actionTitle, text.whiteText]}>Number of file: {this.state.files.length}</Text>
+        let msg
+        let file
+        let list
+        let numberFiles = this.state.files.length
+
+        if(numberFiles > 0 && !this.state.isRecording){
+            msg = <Text style={[text.blueText]}>This information is used of development purposes</Text>
+            file = <Text style={[text.whiteText]}>Number of file: {this.state.files.length}</Text>
+            list = <FlatList
+						data={this.state.files}
+						keyExtractor={(item, index) => index.toString()}
+						renderItem={({ item, index }) =>
+							<SoundComponent file={item} onDelete={this.onDeleteFile} />}
+					/>
+        }
 
         if (this.state.isRecording) {
             info = <Text style={[text.actionTitle, text.whiteText]}>It is recording. Press another time to stop recording</Text>
@@ -109,13 +123,9 @@ export default class ReceiveFile extends Component<any, any> {
 
                 <View style={[containers.container, containers.receiveFile]} >
                     {info}
+                    {msg}
                     {file}
-                    <FlatList
-						data={this.state.files}
-						keyExtractor={(item, index) => index.toString()}
-						renderItem={({ item, index }) =>
-							<SoundComponent file={item} onDelete={this.onDeleteFile} />}
-					/>
+                    {list}
                 </View>
 
                 <PlayButton disabled={this.state.isRecording} onPress={() => this.toggleRecord()}/>
