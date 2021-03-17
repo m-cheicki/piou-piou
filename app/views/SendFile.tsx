@@ -3,14 +3,11 @@ import {SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import Shadow from "shadows-rn";
 
-import * as fs from 'react-native-fs';
 import { Base64 } from '../helpers/base64';
 import { BitSeparator } from '../helpers/bitSeparator';
 import { SignalBuilder } from '../helpers/signalBuilder';
 import { concat, linspace, normalize } from '../helpers/tools';
 import { WAV } from '../helpers/WAV';
-import createBuffer from "audio-buffer-from"; 
-import toWav from "audiobuffer-to-wav"; 
 
 import Header from './Header';
 import PlayButton from '../components/PlayButton'; 

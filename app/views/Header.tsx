@@ -1,18 +1,6 @@
-import React, { Component } from "react";
-import {
-  Text,
-  View,
-SafeAreaView,
-TouchableOpacity, 
-  Image,
-  LogBox
-} from 'react-native';
-import {
-    colors,
-  buttons,
-  containers,
-  styles, text
-} from '../resources/css/style';
+import React from "react";
+import { View, Image } from 'react-native';
+import { containers } from '../resources/css/style';
 
 import typo from '../resources/images/typo.png'; 
 

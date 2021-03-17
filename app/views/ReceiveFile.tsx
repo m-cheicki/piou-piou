@@ -1,20 +1,8 @@
 import React, { Component } from 'react'; 
 import Shadow from "shadows-rn"; 
 
-import {
-    colors, 
-  buttons,
-    containers,
-  shadows,
-  styles, 
-    text, 
-} from '../resources/css/style';
-import {
-  Text,
-  View,
-  SafeAreaView,
-  TouchableOpacity, FlatList
-} from 'react-native';
+import { containers, shadows, text } from '../resources/css/style';
+import { Text, View, SafeAreaView, TouchableOpacity, FlatList} from 'react-native';
 
 import Header from './Header';
 import PlayButton from '../components/PlayButton';
@@ -100,7 +88,7 @@ export default class ReceiveFile extends Component<any, any> {
 
         if(numberFiles > 0 && !this.state.isRecording){
             msg = <Text style={[text.blueText]}>This information is used of development purposes</Text>
-            file = <Text style={[text.whiteText]}>Number of file: {this.state.files.length}</Text>
+            file = <Text style={[text.whiteText]}>Number of file: {numberFiles}</Text>
             list = <FlatList
 						data={this.state.files}
 						keyExtractor={(item, index) => index.toString()}

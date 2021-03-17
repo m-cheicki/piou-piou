@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 
-// Color palette
 export const colors = {
     "white": "#F8F8F8", 
     "yellow": "#FECA57",
@@ -57,7 +56,6 @@ export const buttons = StyleSheet.create({
     }, 
 })
 
-// Containers
 export const containers = StyleSheet.create({
     container: {
         flex: 1, 

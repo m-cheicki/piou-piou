@@ -3,8 +3,6 @@ import { TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import Shadow from "shadows-rn";
 
-import { SoundRecorder } from "../helpers/soundRecorder";
-
 import { colors, buttons, containers, shadows } from '../resources/css/style';
 
 export interface PlayButtonState {
