@@ -13,14 +13,17 @@ import {
   Text,
   View,
   SafeAreaView,
-  TouchableOpacity
+  TouchableOpacity, FlatList
 } from 'react-native';
 
 import Header from './Header';
 import PlayButton from '../components/PlayButton';
 import { SoundRecorder } from "../helpers/soundRecorder";
+import { SoundStorage } from "../helpers/soundStorage";
 
-
+export interface AppState {
+	files: string[]
+}
 
 export default class ReceiveFile extends Component<any, any> {
 
@@ -29,7 +32,8 @@ export default class ReceiveFile extends Component<any, any> {
 
         this.state = {
             isRecording: false,
-            disableButton: false
+            disableButton: false,
+			files: []
         }
 
         SoundRecorder.init()
@@ -60,19 +64,38 @@ export default class ReceiveFile extends Component<any, any> {
         this.setState({ disableButton: false })
 
         const uri = await SoundRecorder.stop()
-
+        
         if (uri && this.props.onStop) {
-            this.props.onStop(uri)
+            this.onRecordEnd(uri)
         }
+        this.updateSoundList()
     }
 
+    public componentDidMount = () => {
+		this.updateSoundList()
+	}
+
+	private updateSoundList = async () => {
+		let files: string[] = await SoundStorage.getFiles()
+		this.setState({ files: files })
+	}
+
+	private onRecordEnd = async (file: string) => {
+		this.setState({ files: [file, ...this.state.files] })
+	}
+
+	private onDeleteFile = async (file: string) => {
+		await SoundStorage.delete(file)
+		await this.updateSoundList()
+	}
 
     render = () => {
 
         let info
+        let file = <Text style={[text.actionTitle, text.whiteText]}>Number of file: {this.state.files.length}</Text>
 
         if (this.state.isRecording) {
-            info = <Text>It is recording. Press another time to stop recording</Text>
+            info = <Text style={[text.actionTitle, text.whiteText]}>It is recording. Press another time to stop recording</Text>
         }
 
         return (
@@ -85,6 +108,7 @@ export default class ReceiveFile extends Component<any, any> {
 
                 <View style={[containers.container, containers.receiveFile]} >
                     {info}
+                    {file}
                 </View>
 
                 <PlayButton disabled={this.state.isRecording} onPress={() => this.toggleRecord()}/>
