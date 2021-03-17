@@ -132,7 +132,15 @@ export const text = StyleSheet.create({
         fontWeight: "normal", 
         fontSize: 24,
         fontFamily: 'Montserrat',
-        marginVertical: 24, 
+        marginVertical: 24,
+    },
+    actionTitle: {
+        fontWeight: "normal", 
+        fontSize: 16,
+        fontFamily: 'Montserrat',
+        marginVertical: 24,
+        paddingHorizontal: 68,
+        textAlign: "center"
     }, 
     salmonText: {
         color: colors.salmon, 
