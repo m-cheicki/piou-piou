@@ -6,6 +6,7 @@ import { FFT } from "../helpers/ftt";
 import { SoundPlayer } from "../helpers/soundPlayer";
 import { SoundStorage } from "../helpers/soundStorage";
 import { linspace, stdArr } from "../helpers/tools";
+import { Statistic } from '../helpers/statistic';
 import { WAV } from "../helpers/WAV";
 import { colors } from "../resources/css/style";
 
@@ -63,21 +64,11 @@ export default class SoundComponent extends Component<SoundProps, SoundState> {
         let magnitudes: number[] = c.map(x => (x.Magnitude / N_SAMPLE) * 2).slice(0, N_SAMPLE / 2)
         magnitudes[0] /= 2
 
-        const std = stdArr(magnitudes)
-
-        // find max
-        let max = -Number.MAX_VALUE
-        for (let i = 0; i < magnitudes.length; i++) {
-            const val = magnitudes[i]
-            if (val > max) {
-                max = val
-            }
-        }
-
+        const max = Statistic.max(magnitudes)
         let freq: number[] = []
 
         for (let i = 0; i < magnitudes.length; i++) {
-            if (magnitudes[i] > max / 2) {
+            if (magnitudes[i] > (max / 2)) {
                 const val = frequencies[i]
                 const index = freq.findIndex(x => x >= val - 5 && x <= val + 5)
                 if (index == -1)
@@ -90,14 +81,12 @@ export default class SoundComponent extends Component<SoundProps, SoundState> {
         return freq.map(x => Math.floor(x))
     }
 
-    private analyse = async () => {
+    private decode = async () => {
         this.setState({ disableAction: true })
 
-        console.log('Analysing')
         const bytes = await SoundStorage.read(this.props.file)
-
         const wav = WAV.decode(bytes)
-        console.log(wav)
+        console.log('wav', wav)
 
         if (wav) {
             const fmt = wav.subChunks?.filter(x => x.chunkID == 'fmt ')
@@ -112,16 +101,14 @@ export default class SoundComponent extends Component<SoundProps, SoundState> {
 
                 if (dataContent) {
                     const signal = dataContent.map(x => x.ch_1)
-
                     const freq = this.getFreq(signal, sampleRate)
-
+                    console.log('FFT result', freq)
                     setTimeout(() => {
                         Alert.alert('FFT result', freq.join('\n'))
                     }, 300)
                 }
             }
         }
-
         this.setState({ disableAction: false })
     }
 
@@ -131,7 +118,7 @@ export default class SoundComponent extends Component<SoundProps, SoundState> {
                 <Text style={{marginVertical:12}}>{this.state.file}</Text>
                 <View style={{flex:1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
                     <Button onPress={this.play} title='Play' disabled={this.state.disableAction} color={colors.blue} />
-                    <Button onPress={this.analyse} title='Analyse' disabled={this.state.disableAction} color={colors.blue} />
+                    <Button onPress={this.decode} title='Analyse' disabled={this.state.disableAction} color={colors.blue} />
                     <Button onPress={this.delete} title='Delete' disabled={this.state.disableAction} color={colors.blue} />
                 </View>
                 <Spinner visible={this.state.disableAction} textContent={'Loading...'} />
