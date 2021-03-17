@@ -8,6 +8,8 @@ import { BitSeparator } from '../helpers/bitSeparator';
 import { SignalBuilder } from '../helpers/signalBuilder';
 import { concat, linspace, normalize } from '../helpers/tools';
 import { WAV } from '../helpers/WAV';
+import { SoundStorage } from '../helpers/soundStorage';
+import { SoundPlayer } from '../helpers/soundPlayer';
 
 import Header from './Header';
 import PlayButton from '../components/PlayButton'; 
@@ -97,30 +99,31 @@ export default class SendFile extends Component<any, any> {
         return signal
     }
 
-    /** TODO : enregistrer le signal sonore dans un wav file */
-    public encode = (message: string) => {
+    public encode = async (message: string) => {
         const SAMPLE_RATE = 44100
         const BLOC_DURATION = 0.2
         const BIT_PER_SAMPLE = 16
+        let wavSignal: number[] = []
 
         const message_b64: string = Base64.encode(message)
         const signal: number[] = this._encode_base64_to_signal(message_b64, SAMPLE_RATE, BLOC_DURATION)
 
         const sound = WAV.encode(signal, 1, SAMPLE_RATE, BIT_PER_SAMPLE)
+        
+        for (let i = 0; i < sound.length; i++){
+            wavSignal.push(sound[i])
+        }
 
+        let filename = await SoundStorage.save(wavSignal, 1, SAMPLE_RATE, BIT_PER_SAMPLE)
+        SoundPlayer.play(filename)
     }
 
     private _onConvert = () => {
         const base64: string = this.state.base64Data
         
         if (base64) {
-            console.log('Start converting : ', base64.length)
             this.encode(base64)
         }
-    }
-
-    private _onDeleteFile = async () => {
-        await this._getFileInStorage()
     }
 
     render = () => {

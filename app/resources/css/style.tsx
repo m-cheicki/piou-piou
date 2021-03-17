@@ -118,24 +118,24 @@ export const text = StyleSheet.create({
         textTransform: "uppercase", 
         paddingVertical: 12,  
         paddingHorizontal: 24,
-        fontFamily: 'Montserrat',
+        //fontFamily: 'Montserrat',
         letterSpacing: 2,
         fontSize: 12
     },
     buttonChooseFile: {
-        fontFamily: 'Montserrat Medium',
+        //fontFamily: 'Montserrat Medium',
         letterSpacing: 2
     },
     mainActionTitle: {
         fontWeight: "normal", 
         fontSize: 24,
-        fontFamily: 'Montserrat',
+        //fontFamily: 'Montserrat',
         marginVertical: 24,
     },
     actionTitle: {
         fontWeight: "normal", 
         fontSize: 16,
-        fontFamily: 'Montserrat',
+        //fontFamily: 'Montserrat',
         marginVertical: 24,
         paddingHorizontal: 68,
         textAlign: "center"

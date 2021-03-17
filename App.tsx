@@ -18,10 +18,10 @@ export default class App extends Component<any, any> {
 
   async componentDidMount() {
     await Font.loadAsync({
-      'Montserrat' : require('./assets/fonts/Montserrat_400Regular.ttf'), 
-      'Montserrat Medium' : require('./assets/fonts/Montserrat_500Medium.ttf'), 
-      'Montserrat Bold' : require('./assets/fonts/Montserrat_600SemiBold.ttf'), 
-      'Open Sans' : require('./assets/fonts/OpenSans_400Regular.ttf'), 
+      //'Montserrat' : require('./assets/fonts/Montserrat_400Regular.ttf'), 
+      //'Montserrat Medium' : require('./assets/fonts/Montserrat_500Medium.ttf'), 
+      //'Montserrat Bold' : require('./assets/fonts/Montserrat_600SemiBold.ttf'), 
+      //'Open Sans' : require('./assets/fonts/OpenSans_400Regular.ttf'), 
     })
     this.setState({ fontLoaded: true })
   }
