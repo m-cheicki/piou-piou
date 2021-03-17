@@ -9,8 +9,8 @@ import { BitSeparator } from '../helpers/bitSeparator';
 import { SignalBuilder } from '../helpers/signalBuilder';
 import { concat, linspace, normalize } from '../helpers/tools';
 import { WAV } from '../helpers/WAV';
-import * as AudioBuffer from "audio-buffer-from"; 
-import * as BufferToWav from "audiobuffer-to-wav"; 
+import createBuffer from "audio-buffer-from"; 
+import toWav from "audiobuffer-to-wav"; 
 
 import Header from './Header';
 import PlayButton from '../components/PlayButton'; 
@@ -59,7 +59,6 @@ export default class SendFile extends Component<any, any> {
     }
 
     private _onSelectData = (base64: string) => {
-        base64 = "test"
         if (base64) {
             console.log("BASE64 Length : " + base64.length)
             this.setState({ selectedDataSize: base64.length })
@@ -101,30 +100,24 @@ export default class SendFile extends Component<any, any> {
         return signal
     }
 
+    /** TODO : enregistrer le signal sonore dans un wav file */
     public encode = (message: string) => {
         const SAMPLE_RATE = 44100
         const BLOC_DURATION = 0.2
         const BIT_PER_SAMPLE = 16
 
         const message_b64: string = Base64.encode(message)
-
         const signal: number[] = this._encode_base64_to_signal(message_b64, SAMPLE_RATE, BLOC_DURATION)
 
         const sound = WAV.encode(signal, 1, SAMPLE_RATE, BIT_PER_SAMPLE)
-        let buffer = AudioBuffer(sound, { context: AudioContext })
-        
 
-        FileSystem.writeAsStringAsync(FileSystem.documentDirectory + '/test_encode.wav', sound, { encoding: null })
-        console.info(FileSystem.documentDirectory + 'test_encode.txt')
     }
 
     private _onConvert = () => {
         const base64: string = this.state.base64Data
         
-        console.log('Start converting : ', base64.length)
-        
         if (base64) {
-            console.log('Encoding....')
+            console.log('Start converting : ', base64.length)
             this.encode(base64)
         }
     }
@@ -134,15 +127,13 @@ export default class SendFile extends Component<any, any> {
     }
 
     render = () => {
-        let datasize
         let playButton
 
         if (this.state.selectedDataSize > 0 ) {
-            datasize = <Text>Data length : {this.state.selectedDataSize} caracters</Text>
             playButton = <PlayButton disabled={false} onPress={() => this._onConvert()}/>
         }
         else {
-            playButton = <PlayButton disabled={true} onPress={() => console.log("You haven't chose a file")}/>
+            playButton = <PlayButton disabled={true} onPress={() => console.log("You haven't chosen a file")}/>
         }
 
         return (
@@ -153,7 +144,6 @@ export default class SendFile extends Component<any, any> {
                 <View style={[containers.container, containers.sendFile]} >
                     <Text style={[text.mainActionTitle, text.blueText]}>Send a file</Text>
                     <SelectFile onSelectData={this._onSelectData} />
-                    {datasize}
                 </View>
             
                 {playButton}
