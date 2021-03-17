@@ -18,6 +18,7 @@ import {
 
 import Header from './Header';
 import PlayButton from '../components/PlayButton';
+import SoundComponent from '../components/SoundComponent';
 import { SoundRecorder } from "../helpers/soundRecorder";
 import { SoundStorage } from "../helpers/soundStorage";
 
@@ -109,6 +110,12 @@ export default class ReceiveFile extends Component<any, any> {
                 <View style={[containers.container, containers.receiveFile]} >
                     {info}
                     {file}
+                    <FlatList
+						data={this.state.files}
+						keyExtractor={(item, index) => index.toString()}
+						renderItem={({ item, index }) =>
+							<SoundComponent file={item} onDelete={this.onDeleteFile} />}
+					/>
                 </View>
 
                 <PlayButton disabled={this.state.isRecording} onPress={() => this.toggleRecord()}/>
