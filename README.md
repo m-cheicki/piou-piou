@@ -43,7 +43,7 @@ For this part, we don't have yet the processing of the sound to transform it int
 
 ## Useful links
 
--   [Our tests](virtuel75/piou-piou)
+-   [Our tests](https://github.com/virtuel75/piou-piou)
 
 ### Contributors
 
