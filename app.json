@@ -28,6 +28,7 @@
     "web": {
       "favicon": "./assets/splash_icon.png"
     },
-    "description": ""
+    "description": "🐤PiouPiou is a mobile application that lets you transfer files via sound waves from one smartphone to another",
+    "githubUrl": "https://github.com/m-cheicki/piou-piou"
   }
 }
