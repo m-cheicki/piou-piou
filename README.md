@@ -47,6 +47,6 @@ For this part, we don't have yet the processing of the sound to transform it int
 
 ### Contributors
 
-[![](https://github.com/virtuel75.png?size=50)](https://github.com/virtuel75)
-[![](https://github.com/SamZob.png?size=50)](https://github.com/SamZob)
-[![](https://github.com/m-cheicki.png?size=50)](https://github.com/m-cheicki)
+<a href="https://github.com/virtuel75"><img src="https://github.com/virtuel75.png" width="350"></a>
+<a href="https://github.com/SamZob"><img src="https://github.com/SamZob.png" width="350"></a>
+<a href="https://github.com/m-cheicki"><img src="https://github.com/m-cheicki.png" width="350"></a>
